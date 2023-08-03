@@ -46,7 +46,7 @@ Topics related to JavaScript, React &amp; Node
 
 12.  closure
 13.  hoisting
-14.  lexical scoping
+14.  lexical scoping ( Reference - https://www.freecodecamp.org/news/javascript-lexical-scope-tutorial/ )
 15.  prototype chaining - prototype vs \_proto\_
 16.  Event delegation - Event bubbling (default) ,capture
 17.  Call, Apply, Bind

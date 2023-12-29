@@ -32,7 +32,7 @@ Topics related to JavaScript, React &amp; Node
 **JavaScript**
 
 1.  How event loop works ?
-2.  Closures
+2.  function Callback
 3.  event bubbling
 4.  debouncing - last event + interval
 5.  throttling - last event served + interval
@@ -44,7 +44,7 @@ Topics related to JavaScript, React &amp; Node
 
 11.  Promise.allSettled: This one will always get resolved with an array having info about resolved and rejected promises. Have a close look at following properties (status, value, reason ) of the resulting array.
 
-12.  closure
+12.  closures
 13.  hoisting
 14.  lexical scoping ( Reference - https://www.freecodecamp.org/news/javascript-lexical-scope-tutorial/ )
 15.  prototype chaining - prototype vs \_proto\_

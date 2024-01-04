@@ -24,7 +24,7 @@ console.log(flat(ARR));
 ```
 ## output of following
 ```
-console.log([1,2,3] + [4,5,6]);
+console.log([1,2,3] + [4,5,6]); // 1,2,34,5,6
 ```
 
 ## output of following
@@ -39,6 +39,11 @@ console.log([1,2,3] + [4,5,6]);
     console.log(a);
     console.log(b); 	 	
 })();
+/*
+   undefined
+   1
+   2
+*/
 ```
 ## example of how you can use setInterval in react functional components
 ```

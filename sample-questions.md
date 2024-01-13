@@ -70,3 +70,36 @@ export default function App() {
 }
 
 ```
+
+## Example of Deboucing
+```
+import { useCallback, useEffect, useRef, useState } from "react";
+
+const INTERVAL = 500;
+const debounce = (fn, delay) => {
+  let timerId;
+  return (...args) => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => fn(...args), delay);
+  };
+};
+export default function App() {
+  const [text, setText] = useState("");
+  const [dText, setDtext] = useState("");
+
+  const debouceHandler = useCallback((data) => setDtext(data), [text]);
+
+  return (
+    <div className="App">
+      <input
+        onChange={(e) => {
+          setText(e.target.value);
+          debouceHandler(e.target.value);
+        }}
+      />
+      <p>{dText}</p>
+    </div>
+  );
+}
+
+```

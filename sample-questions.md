@@ -121,5 +121,8 @@ console.log(sum(1)(2)());
 
 ## difference between a function and react hook-
 ```
-a function is a general programming concept, while a React hook is a specific type of function introduced in React for managing state and side effects in functional components. Functions can be used for a wide range of purposes, while React hooks are specific to React components and their lifecycle.
+a function is a general programming concept, while a React hook is a specific type of function
+introduced in React for managing state and side effects in functional components.
+
+Functions can be used for a wide range of purposes, while React hooks are specific to React components and their lifecycle.
 ```

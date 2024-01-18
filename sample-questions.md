@@ -73,35 +73,43 @@ export default function App() {
 
 ## Example of Deboucing
 ```
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
-const INTERVAL = 500;
-const debounce = (fn, delay) => {
-  let timerId;
-  return (...args) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => fn(...args), delay);
+const DebounceExample = () => {
+  const [inputText, setInputText] = useState("");
+  const [debouncedText, setDebouncedText] = useState("");
+
+  const debounce = (fn, delay) => {
+    let timerId;
+    return (...args) => {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => fn(...args), delay);
+    };
   };
-};
-export default function App() {
-  const [text, setText] = useState("");
-  const [dText, setDtext] = useState("");
 
-  const debouceHandler = useCallback((data) => setDtext(data), [text]);
+  // Debounced version of setText
+  const debouncedSetText = debounce((text) => setDebouncedText(text), 1500);
+
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+    debouncedSetText(e.target.value);
+  };
 
   return (
-    <div className="App">
+    <div>
+      <h2>Debounce Example</h2>
       <input
-        onChange={(e) => {
-          setText(e.target.value);
-          debouceHandler(e.target.value);
-        }}
+        type="text"
+        placeholder="Type something..."
+        value={inputText}
+        onChange={handleInputChange}
       />
-      <p>{dText}</p>
+      <p>Debounced Text: {debouncedText}</p>
     </div>
   );
-}
+};
 
+export default DebounceExample;
 ```
 
 ## sum(1)(2)(3)()

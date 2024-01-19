@@ -124,7 +124,7 @@ function sum(a){
   }
 }
 
-console.log(sum(1)(2)());
+console.log(sum(1)(2)(3)()); // Output: 6
 ```
 
 ## difference between a function and react hook-
@@ -134,3 +134,58 @@ introduced in React for managing state and side effects in functional components
 
 Functions can be used for a wide range of purposes, while React hooks are specific to React components and their lifecycle.
 ```
+
+## How to combine two selectors in redux ?
+In Redux, you can use the reselect library to create selectors and combine them efficiently. Reselect provides a createSelector function that allows you to create memoized selectors, which will only recalculate their result if their input selectors have changed.
+
+Here's an example of combining multiple selectors using reselect:
+
+Install reselect:
+```npm install reselect``` and
+Create selectors for individual pieces of state:
+```
+// selectors.js
+
+import { createSelector } from 'reselect';
+
+const getUsers = (state) => state.users;
+const getFilter = (state) => state.filter;
+
+export const getFilteredUsers = createSelector(
+  [getUsers, getFilter],
+  (users, filter) => {
+    // Your logic to filter users based on the filter
+    return users.filter((user) => user.name.includes(filter));
+  }
+);
+```
+In this example, getFilteredUsers is a selector that depends on getUsers and getFilter. It applies some filtering logic to the users based on the filter value.
+
+Use the combined selector in your component:
+```
+// YourComponent.js
+
+import React from 'react';
+import { connect } from 'react-redux';
+import { getFilteredUsers } from './selectors';
+
+const YourComponent = ({ filteredUsers }) => {
+  // Use filteredUsers in your component
+  return (
+    <div>
+      {filteredUsers.map((user) => (
+        <div key={user.id}>{user.name}</div>
+      ))}
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    filteredUsers: getFilteredUsers(state),
+  };
+};
+
+export default connect(mapStateToProps)(YourComponent);
+```
+Now, filteredUsers in your component will be automatically updated whenever the users or filter state changes, thanks to the memoization provided by reselect.

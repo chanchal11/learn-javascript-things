@@ -189,3 +189,9 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(YourComponent);
 ```
 Now, filteredUsers in your component will be automatically updated whenever the users or filter state changes, thanks to the memoization provided by reselect.
+
+## differences between React.memo() and useMemo():
+
+React.memo() is a higher-order component that we can use to wrap components that we do not want to re-render unless props within them change
+
+useMemo() is a React Hook that we can use to wrap functions within a component. We can use this to ensure that the values within that function are re-computed only when one of its dependencies change

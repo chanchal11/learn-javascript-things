@@ -195,3 +195,28 @@ Now, filteredUsers in your component will be automatically updated whenever the 
 React.memo() is a higher-order component that we can use to wrap components that we do not want to re-render unless props within them change
 
 useMemo() is a React Hook that we can use to wrap functions within a component. We can use this to ensure that the values within that function are re-computed only when one of its dependencies change
+
+## what would be output of this code - 
+```
+const obj = {
+  name: 'Chanchal',
+  getName: () => {
+    console.log('My name:', this.name)
+  }
+};
+obj.getName(); // My name:undefined
+```
+
+## what would be output of this code - 
+```
+function Emp(name){
+    this.name = name;
+    this.getName = () => {
+    console.log('My name:', this.name)
+  }
+}
+const a = new Emp('Chanchal');
+a.getName(); // My name:Chanchal
+```
+
+

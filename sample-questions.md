@@ -219,4 +219,7 @@ const a = new Emp('Chanchal');
 a.getName(); // My name:Chanchal
 ```
 
+## Pros and Cons of Redux
+https://www.linkedin.com/pulse/pros-cons-using-redux-react-godwin-ehile/
+## issues in Server Side Rendering in react
 

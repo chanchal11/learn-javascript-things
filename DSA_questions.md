@@ -67,3 +67,39 @@ function checkAnagram(str1, str2){
 console.log(checkAnagram("car", "arc"));
 
 ```
+
+## from a array that can have a number or an another array - give maximum values of each array
+```
+// input [1,[4,6,[8,3]],[11,12],2]
+// output [2,6,12,8] or [2,12,6,8]
+// [n, a[n,n,a], a[n,n], n]
+
+//[4,6,[8,3]] => [6, 8]
+
+function getMaxs(arr){
+    let outArr = [];
+    let max = null;
+    let arrToProcess = [];
+    for(let i=0; i< arr.length; i++){
+        if(!Array.isArray(arr[i])) {
+            if(max && arr[i] > max ){
+                max = arr[i];
+            }else if(max == null) {
+                max = arr[i];
+            }
+        }
+        else {
+            arrToProcess.push(arr[i]);                
+        }
+    }
+    outArr.push(max);
+    
+    for(let i=0; i< arrToProcess.length;i++){
+            outArr.push(...getMaxs(arrToProcess[i]));   
+    }
+    
+    return outArr;
+}
+
+console.log(getMaxs([1,[4,6,[8,3]],[11,12],2]));
+```

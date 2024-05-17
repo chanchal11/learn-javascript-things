@@ -149,3 +149,30 @@ var merge = function(intervals) {
 
 console.log(merge([[1,4],[4,5],[8,10],[15,18]]));
 ```
+
+## Sorted squared values of given sorted array
+
+- Test Case 1 Input [-4,-1,0,3,10] => [ 0, 1, 9, 16, 100 ]
+- Test Case 2 Input [-4,-3,-1] => [ 1, 9, 16 ]
+
+```
+function getSqrs(nums){
+    let l = 0, r = nums.length - 1;
+    while(l < r){
+        if(nums[l] >= 0){
+            break;
+        }
+        
+        const leftHandValue = -1 * nums[l];
+        const RightHandValue = nums[r];
+        if( leftHandValue >= RightHandValue ){
+            nums.splice(r+1, 0, nums[l]);
+            nums.splice(0, 1);
+        }
+        r--;
+    }
+    return nums.map((v) => v * v );
+}
+
+console.log(getSqrs( [-5, -3, -2]));
+```

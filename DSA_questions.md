@@ -176,3 +176,36 @@ function getSqrs(nums){
 
 console.log(getSqrs( [-5, -3, -2]));
 ```
+
+## Sort the array from mid element in opposite direction
+
+- Given -> [5,6,2, 7, 8, 7, 31]
+- Output => [2, 5,6, 7, 31, 8, 7]
+
+```
+// using bubble sort
+function customSort(arr){
+    let middleIndex = Math.floor((arr.length - 2 ) / 2);
+    for(let i = 0; i<middleIndex; i++ ){
+        for(let j=i+1; j <=middleIndex; j++ ){
+            if(arr[i]> arr[j]){
+                let temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }    
+        }    
+    }        
+    for(let i = middleIndex+ (arr.length % 2 == 0 ? 1 : 2); i< arr.length - 1; i++ ){
+        for(let j=i+1; j <= arr.length; j++ ){
+            if(arr[i] < arr[j]){
+                let temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }    
+        }
+    }
+    return arr;
+}
+
+console.log(customSort([5,6,2, 7, 8, 7, 31]));
+```

@@ -209,3 +209,35 @@ function customSort(arr){
 
 console.log(customSort([5,6,2, 7, 8, 7, 31]));
 ```
+
+## Write a function that takes a string as input and returns the length of the longest substring that contains no repeated characters.
+- Input: s = “abcdefabcbbkkllnnooppqqrrss”   'aababcdefaaa', 'abcdefa'
+- Output: 6
+
+```
+(function main() {
+  const readline = require("readline");
+  const r1 = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  var solution = function(s) {
+    let mySet = new Set();
+    let maxLength = 0, start = 0;
+
+    for (let end = 0; end < s.length; end++) {
+      while (mySet.has(s[end])) {
+        mySet.delete(s[start]);
+        start++;
+      }
+      mySet.add(s[end]);
+      maxLength = Math.max(maxLength, end - start + 1);
+    }
+
+    return maxLength;
+  };
+
+ console.log(solution('abcdefa'));
+})();
+```

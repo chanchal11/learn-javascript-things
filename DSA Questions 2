@@ -1,0 +1,40 @@
+## Write Recursive Function that takes following input and gives following out
+```
+const inObj = {
+    a: {
+      b: {
+        d: 1
+      }
+    },
+    e: {
+      g: 8
+    }
+  }
+  /*o/p: a.b.c = 1, a.d.c=1 ,d.g = 8 */
+  
+  function recursivePrint(obj, output, parent){
+    Object.keys(obj).forEach((key) => {
+      if(typeof obj[key] == 'object'){
+        if(parent){
+          recursivePrint(obj[key], output, parent+'.'+key);
+        }else {
+          recursivePrint(obj[key], output, key);
+        }
+      }else {
+        if(parent){
+          output[parent+'.'+key] = obj[key];
+        }else {
+          output[key] = obj[key];
+        }
+      }
+    });
+  } 
+  
+  function sol( obj ) {
+  	const output = {}; 
+  	recursivePrint(obj, output);
+  	console.log(output); 
+  }
+  
+  sol(inObj)
+```

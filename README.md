@@ -138,3 +138,14 @@ console.log(length)
 var detail = users[0];    
 console.log(detail)
 ```
+
+/*
+ * Your task is to:
+ *   1. Load the list of wizards when the page loads.
+ *   2. Once the list of wizards has loaded, render the list of wizards (first and last name) in an unordered list.
+ *   3. For each wizard, list out each elixir they have (name and effect).
+ */
+https://stackblitz.com/edit/stackblitz-starters-jytdrrgd
+
+Back-end Assessment 
+https://stackblitz.com/edit/stackblitz-starters-jytdrrgd?file=assessment.md

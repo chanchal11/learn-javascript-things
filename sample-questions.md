@@ -219,7 +219,47 @@ const a = new Emp('Chanchal');
 a.getName(); // My name:Chanchal
 ```
 
+## Part 1) Design a JSON schema validator
+```
+const schema =  {
+	'name?': 'string',
+	age: 'number',
+deviceCount: 'number',
+}
+ 
+const input = {
+	name: 'Random',
+// 	age: 'abcd',
+deviceCount: 5,
+location: 'wdd'
+}
+
+function validateSchema(schema, input){
+    const errors = [];
+    Object.keys(schema).forEach((rawkey)  => {
+        
+        const optional = rawkey.endsWith('?');
+        const key = optional ? rawkey.split('?')[0] : rawkey;
+        
+        if(input.hasOwnProperty(key)){
+            if(typeof input[key] !== schema[key]){
+                errors.push(`Type of ${key} expected ${typeof schema[key]} but found ${typeof input[key]}`);
+            }
+        }else if(!optional) {
+            errors.push(`Key ${key} is missing.`);
+        }   
+    });
+    Object.keys(input).forEach((key)  => {
+        if(!schema.hasOwnProperty(key) && !schema.hasOwnProperty(key+'?')){
+            errors.push(`Key ${key} is an extra parammeter, not expected.`);
+        }   
+    });
+    return errors;    
+}
+
+console.log(validateSchema(schema, input));
+```
+
 ## Pros and Cons of Redux
 https://www.linkedin.com/pulse/pros-cons-using-redux-react-godwin-ehile/
 ## issues in Server Side Rendering in react
-
